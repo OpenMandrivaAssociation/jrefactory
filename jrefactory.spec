@@ -1,7 +1,7 @@
 %define gcj_support 1
 %define	name	jrefactory
 %define	version	2.8.9
-%define	release	%mkrel 4.4
+%define	release	%mkrel 4.5
 %define	section	free
 
 Name:		%{name}
@@ -20,8 +20,6 @@ Url:		http://jrefactory.sourceforge.net/
 BuildRequires:	jpackage-utils >= 0:1.5
 BuildRequires:	ant
 %if %{gcj_support}
-Requires(post): java-gcj-compat
-Requires(postun): java-gcj-compat
 BuildRequires:  java-gcj-compat-devel
 %else
 BuildArch:	noarch
