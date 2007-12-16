@@ -1,7 +1,7 @@
 %define gcj_support 1
 %define	name	jrefactory
 %define	version	2.8.9
-%define	release	%mkrel 4.5
+%define	release	%mkrel 4.6
 %define	section	free
 
 Name:		%{name}
@@ -17,7 +17,7 @@ Patch1:		%{name}-htmleditorkit.patch
 Patch2:		%{name}-savejpg.patch
 Patch3:		%{name}-2.8.9-fixcrlf.patch
 Url:		http://jrefactory.sourceforge.net/
-BuildRequires:	jpackage-utils >= 0:1.5
+BuildRequires:	java-rpmbuild >= 0:1.5
 BuildRequires:	ant
 %if %{gcj_support}
 BuildRequires:  java-gcj-compat-devel
