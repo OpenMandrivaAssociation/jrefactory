@@ -24,6 +24,7 @@ BuildRequires:  java-gcj-compat-devel
 %else
 BuildArch:	noarch
 %endif
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 JRefactory provides a variety of refactoring and pretty printing tools
