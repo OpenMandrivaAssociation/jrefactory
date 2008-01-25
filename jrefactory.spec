@@ -1,7 +1,7 @@
 %define gcj_support 1
 %define	name	jrefactory
 %define	version	2.8.9
-%define	release	%mkrel 4.6
+%define	release	%mkrel 4.6.0
 %define	section	free
 
 Name:		%{name}
@@ -37,9 +37,7 @@ mv settings/.Refactory settings/sample
 %patch2 -p1
 %patch3 -p0
 rm -f src/org/acm/seguin/pmd/swingui/PMDLookAndFeel.java
-
-# clean jarfiles
-find . -name "*.jar" -exec rm -f {} \;
+%remove_java_binaries
 
 # remove classes that don't build without said jarfiles
 find -name '*.java' | \
@@ -49,7 +47,7 @@ find -name '*.java' | \
 %build
 perl -p -i -e 's|^Class-Path:.*||' \
 	src/meta-inf/refactory.mf
-%ant jar
+%ant -Dant.build.javac.source=1.4 jar
 
 %install
 # jar
