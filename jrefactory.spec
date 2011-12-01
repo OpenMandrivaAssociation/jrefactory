@@ -51,10 +51,10 @@ perl -p -i -e 's|^Class-Path:.*||' \
 
 %install
 # jar
-install -d -m 755 $RPM_BUILD_ROOT%{_javadir}
-install -m 644 ant.build/lib/%{name}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-%{version}.jar
+install -d -m 755 %{buildroot}%{_javadir}
+install -m 644 ant.build/lib/%{name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
 
-(cd $RPM_BUILD_ROOT%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} ${jar/-%{version}/}; done)
+(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} ${jar/-%{version}/}; done)
 
 %if %{gcj_support}
 aot-compile-rpm
@@ -65,7 +65,7 @@ for i in docs/{*.html,*.jpg,*.gif,*.txt} settings/sample/*; do
 done
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %{gcj_support}
 %post
