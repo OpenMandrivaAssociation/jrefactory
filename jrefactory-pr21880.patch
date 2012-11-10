@@ -1,0 +1,16 @@
+http://gcc.gnu.org/bugzilla/show_bug.cgi?id=21880
+
+libgcj's javax.swing.text.JTextComponent has no read() method.
+Fiddle with the arguments to hit JEditorPane's read() instead.
+
+--- jrefactory/src/org/acm/seguin/ide/standalone/JRefactory.java~	2003-10-08 07:52:44.000000000 +0100
++++ jrefactory/src/org/acm/seguin/ide/standalone/JRefactory.java	2005-06-02 15:38:36.000000000 +0100
+@@ -530,7 +530,7 @@
+ 
+       if (file.exists()) {
+          try {
+-            pane.read(new java.io.FileReader(file), file);
++            pane.read(new java.io.FileInputStream(file), file);
+             fileForPane = file.getCanonicalPath();
+          } catch (IOException e) {
+             JOptionPane.showMessageDialog(pane, e.getMessage(), "JRefactory", JOptionPane.INFORMATION_MESSAGE);
