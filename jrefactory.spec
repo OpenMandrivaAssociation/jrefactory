@@ -51,10 +51,10 @@ perl -p -i -e 's|^Class-Path:.*||' \
 
 %install
 # jar
-install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 ant.build/lib/%{name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
+install -d -m 755 $RPM_BUILD_ROOT%{_javadir}
+install -m 644 ant.build/lib/%{name}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-%{version}.jar
 
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} ${jar/-%{version}/}; done)
+(cd $RPM_BUILD_ROOT%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} ${jar/-%{version}/}; done)
 
 %if %{gcj_support}
 aot-compile-rpm
@@ -65,7 +65,7 @@ for i in docs/{*.html,*.jpg,*.gif,*.txt} settings/sample/*; do
 done
 
 %clean
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
 
 %if %{gcj_support}
 %post
@@ -84,4 +84,78 @@ rm -rf %{buildroot}
 %attr(-,root,root) %{_libdir}/gcj/%{name}/%{name}-%{version}.jar.*
 %endif
 
+
+
+
+%changelog
+* Wed May 04 2011 Oden Eriksson <oeriksson@mandriva.com> 0:2.8.9-4.6.3mdv2011.0
++ Revision: 665835
+- mass rebuild
+
+* Fri Dec 03 2010 Oden Eriksson <oeriksson@mandriva.com> 0:2.8.9-4.6.2mdv2011.0
++ Revision: 606111
+- rebuild
+
+* Wed Mar 17 2010 Oden Eriksson <oeriksson@mandriva.com> 0:2.8.9-4.6.1mdv2010.1
++ Revision: 523108
+- rebuilt for 2010.1
+
+* Fri Jan 25 2008 Alexander Kurtakov <akurtakov@mandriva.org> 0:2.8.9-4.6.0mdv2008.1
++ Revision: 157968
+- fix build
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Anssi Hannula <anssi@mandriva.org>
+    - buildrequire java-rpmbuild, i.e. build with icedtea on x86(_64)
+
+* Sat Sep 15 2007 Anssi Hannula <anssi@mandriva.org> 0:2.8.9-4.5mdv2008.0
++ Revision: 87439
+- rebuild to filter out autorequires of GCJ AOT objects
+- remove unnecessary Requires(post) on java-gcj-compat
+
+* Sun Sep 09 2007 Pascal Terjan <pterjan@mandriva.org> 0:2.8.9-4.4mdv2008.0
++ Revision: 82840
+- rebuild
+
+
+* Thu Mar 15 2007 Christiaan Welvaart <spturtle@mandriva.org> 2.8.9-4.3mdv2007.1
++ Revision: 144252
+- rebuild for 2007.1
+- Import jrefactory
+
+* Sun Jun 04 2006 David Walluck <walluck@mandriva.org> 0:2.8.9-4.2mdv2007.0
+- rebuild for libgcj.so.7
+- own %%{_libdir}/gcj/%%{name}
+
+* Fri Dec 02 2005 David Walluck <walluck@mandriva.org> 0:2.8.9-4.1mdk
+- sync with 4jpp
+- aot-compile
+
+* Sun Sep 11 2005 David Walluck <walluck@mandriva.org> 0:2.8.9-3.1mdk
+- release
+
+* Thu Jun 16 2005 Gary Benson <gbenson@redhat.com> - 0:2.8.9-3jpp_1fc
+- Build into Fedora.
+
+* Thu Jun 09 2005 Gary Benson <gbenson@redhat.com>
+- Remove jarfiles from the tarball.
+- Remove classes that don't build without said jarfiles.
+
+* Fri Jun 03 2005 Gary Benson <gbenson@redhat.com>
+- Avoid some API holes in libgcj's Swing implementation.
+- Avoid Sun-specific classes.
+
+* Sat Oct 16 2004 Fernando Nasser <fnasser@redhat.com> - 0:2.8.9-3jpp_1rh
+- First Red Hat build
+
+* Tue Aug 24 2004 Randy Watler <rwatler at finali.com> - 0:2.8.9-3jpp
+- Rebuild with ant-1.6.2
+
+* Wed Jun 02 2004 Randy Watler <rwatler at finali.com> - 0:2.8.9-2jpp
+- Upgrade to Ant 1.6.X
 
