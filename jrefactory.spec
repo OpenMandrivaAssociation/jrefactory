@@ -1,7 +1,7 @@
-%define gcj_support 1
+%define gcj_support 0
 %define	name	jrefactory
 %define	version	2.8.9
-%define	release	%mkrel 4.6.3
+%define	release	4.6.4
 %define	section	free
 
 Name:		%{name}
