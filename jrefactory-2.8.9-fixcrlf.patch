@@ -1,5 +1,5 @@
---- src/org/acm/seguin/ant/Pretty.java.fixcrlf	2003-08-28 19:42:38.000000000 +0200
-+++ src/org/acm/seguin/ant/Pretty.java	2005-04-19 19:03:23.776430224 +0200
+--- ./src/org/acm/seguin/ant/Pretty.java.fixcrlf	2003-08-28 19:42:38.000000000 +0200
++++ ./src/org/acm/seguin/ant/Pretty.java	2005-04-19 19:03:23.776430224 +0200
 @@ -166,7 +166,20 @@
     private void configureFixCrlfTask( FixCRLF fixcrlf_task ) {
        fixcrlf_task.setOwningTarget( getOwningTarget() );
