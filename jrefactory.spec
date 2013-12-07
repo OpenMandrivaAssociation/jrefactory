@@ -4,7 +4,7 @@
 Summary:	JRefactory and Pretty Print
 Name:		jrefactory
 Version:	2.8.9
-Release:	7
+Release:	8
 License:	Apache License
 Group:		Development/Java
 Url:		http://jrefactory.sourceforge.net/
