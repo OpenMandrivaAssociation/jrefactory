@@ -28,7 +28,7 @@ JRefactory provides a variety of refactoring and pretty printing tools
 %prep
 %setup -q -c -n %{name}
 mv settings/.Refactory settings/sample
-%apply_patches
+%autopatch -p1
 rm -f src/org/acm/seguin/pmd/swingui/PMDLookAndFeel.java
 %remove_java_binaries
 
