@@ -7,7 +7,7 @@ Version:	2.8.9
 Release:	12
 License:	Apache License
 Group:		Development/Java
-Url:		http://jrefactory.sourceforge.net/
+Url:		https://jrefactory.sourceforge.net/
 Source0:	%{name}-%{version}-full-RHCLEAN.zip
 Patch0:		%{name}-pr21880.patch
 Patch1:		%{name}-htmleditorkit.patch
